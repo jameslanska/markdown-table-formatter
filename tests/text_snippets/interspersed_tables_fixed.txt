@@ -1,0 +1,21 @@
+# Interspersed Tables
+
+| A    | B    |
+| :--- | :--- |
+| C    | D    |
+> C | D
+
+Stuff 
+
+- list item
+1. list item
+
+| A    | B    |
+| :--- | :--- |
+| C    | D    |
+| Test |
+
+| A     | B    |
+| :---- | :--- |
+| C     | D    |
+| Stuff |

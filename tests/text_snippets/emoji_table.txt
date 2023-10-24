@@ -1,0 +1,6 @@
+| Type | Pointer to Data | Data Length | Pointer to VTable | Total Width |
+| --- | --- | --- | --- | --- |
+| `&String` | ✅ | ❌ | ❌ | 1 ✅ |
+| `&str` | ✅ | ✅ | ❌ | 2 ✅ |
+| `&String as &dyn ToString` | ✅ | ❌ | ✅ | 2 ✅ |
+| `&str as &dyn ToString` | ✅ | ✅ | ✅ | 3 ❌ |

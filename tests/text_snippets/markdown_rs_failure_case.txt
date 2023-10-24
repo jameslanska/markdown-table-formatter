@@ -1,0 +1,8 @@
+| A | B |
+|:-|:-|
+`\|` | D
+
+
+<!--
+markdown-rs 1.0.0.alpha12 did not recognize the third line as part of a table
+-->

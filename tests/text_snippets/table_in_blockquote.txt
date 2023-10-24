@@ -1,0 +1,5 @@
+# Table in Blockquote
+
+> | A | B |
+> |:-|:-|
+> C | D

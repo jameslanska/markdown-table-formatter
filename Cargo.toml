@@ -1,0 +1,27 @@
+[package]
+name = "markdown-table-formatter"
+version = "0.2.0"
+authors = ["James Lanska <65431054+jameslanska@users.noreply.github.com>"]
+edition = "2021"
+description = "Markdown table formatter fully compliant with Unicode 15.1.0"
+readme = "README.md"
+repository = "https://github.com/jameslanska/markdown-table-formatter/"
+license = "MIT"
+keywords = ["markdown", "markdown_tables", "formatter", "tables", "east-asian-width"]
+
+[profile.release]
+codegen-units = 1
+lto = true
+
+[dependencies]
+comrak = { version = "0.19.0", default-features = false }
+unicode-display-width = "0.2.0"
+unicode-segmentation = "1.10.1"
+
+[dev-dependencies]
+criterion = { version = "0.5.1", features = ["html_reports"] }
+test-case = "3.2.1"
+
+[[bench]]
+name = "bench"
+harness = false
