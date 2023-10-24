@@ -8,6 +8,8 @@ readme = "README.md"
 repository = "https://github.com/jameslanska/markdown-table-formatter/"
 license = "MIT"
 keywords = ["markdown", "markdown_tables", "formatter", "tables", "east-asian-width"]
+categories = ["text-processing", "text-editors"]
+exclude = [".github/", "docs/", ".vscode/", "tests/"]
 
 [profile.release]
 codegen-units = 1
