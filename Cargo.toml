@@ -1,6 +1,6 @@
 [package]
 name = "markdown-table-formatter"
-version = "0.2.0"
+version = "0.3.0"
 authors = ["James Lanska <65431054+jameslanska@users.noreply.github.com>"]
 edition = "2021"
 description = "Markdown table formatter fully compliant with Unicode 15.1.0"
