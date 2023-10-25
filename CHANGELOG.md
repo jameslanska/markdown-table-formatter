@@ -7,3 +7,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ## [0.2.0] - 2023-10-24
 
 - Initial release
+
+## [0.3.0] - 2023-11-02
+
+- Add WASM target
+- Update documentation to include how to import the npm package

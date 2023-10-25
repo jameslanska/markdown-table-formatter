@@ -3,7 +3,7 @@
 use comrak::nodes::TableAlignment;
 use unicode_display_width::width;
 
-use crate::ast::TableInDocument;
+use crate::ast::{get_tables, TableInDocument};
 
 const INDEX_OF_DELIMITER_ROW: usize = 1;
 
@@ -227,7 +227,7 @@ fn get_table_content_rows(table: &str) -> TableRows {
 /// - each cell has the same visual width as each of the other cells in its column if that column has an alignment cell
 /// - no text is ever deleted except for leading and trailing whitespace in a cell
 /// - will not panic on malformed tables (any panic is a bug)
-pub fn format_table(table: &TableInDocument<'_>) -> String {
+fn format_table(table: &TableInDocument<'_>) -> String {
     let table_rows = get_table_content_rows(table.text);
 
     // Column "content" width (the length of the longest cell in each column), **without padding**
@@ -316,6 +316,29 @@ fn parse_row_text(line: &str) -> Vec<Cell> {
     }
 
     cells
+}
+
+pub fn format<T: AsRef<str>>(doc: T) -> String {
+    let doc: &str = doc.as_ref();
+
+    let mut fixed = String::with_capacity((doc.len() as f64 * 1.2) as usize);
+
+    let mut last_match = 0;
+    for table in &get_tables(doc) {
+        let start = table.range.start;
+        let end = table.range.end;
+
+        fixed.push_str(&doc[last_match..start]);
+        fixed.push_str(&format_table(table));
+        last_match = end;
+    }
+
+    // last match may be the offset immediately after the end of the string.
+    if last_match < doc.len() {
+        fixed.push_str(&doc[last_match..]);
+    }
+
+    fixed
 }
 
 #[cfg(test)]

@@ -11,6 +11,9 @@ keywords = ["markdown", "markdown_tables", "formatter", "tables", "east-asian-wi
 categories = ["text-processing", "text-editors"]
 exclude = [".github/", "docs/", ".vscode/", "tests/"]
 
+[lib]
+crate-type = ["cdylib", "lib"]
+
 [profile.release]
 codegen-units = 1
 lto = true
@@ -19,6 +22,9 @@ lto = true
 comrak = { version = "0.19.0", default-features = false }
 unicode-display-width = "0.2.0"
 unicode-segmentation = "1.10.1"
+
+[target.'cfg(target_arch = "wasm32")'.dependencies]
+wasm-bindgen = "0.2.87"
 
 [dev-dependencies]
 criterion = { version = "0.5.1", features = ["html_reports"] }

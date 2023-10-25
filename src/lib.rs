@@ -3,29 +3,20 @@
 mod ast;
 mod table_formatter;
 
-use ast::get_tables;
-use table_formatter::format_table;
+use table_formatter::format;
+
+#[cfg(target_arch = "wasm32")]
+use wasm_bindgen::prelude::*;
 
 /// Format the GitHub Flavored Markdown tables in the `doc` string.
+#[cfg(not(target_arch = "wasm32"))]
 pub fn format_tables<T: AsRef<str>>(doc: T) -> String {
-    let doc: &str = doc.as_ref();
+    format(doc)
+}
 
-    let mut fixed = String::with_capacity((doc.len() as f64 * 1.2) as usize);
-
-    let mut last_match = 0;
-    for table in &get_tables(doc) {
-        let start = table.range.start;
-        let end = table.range.end;
-
-        fixed.push_str(&doc[last_match..start]);
-        fixed.push_str(&format_table(table));
-        last_match = end;
-    }
-
-    // last match may be the offset immediately after the end of the string.
-    if last_match < doc.len() {
-        fixed.push_str(&doc[last_match..]);
-    }
-
-    fixed
+/// Format the GitHub Flavored Markdown tables in the `doc` string.
+#[cfg(target_arch = "wasm32")]
+#[wasm_bindgen]
+pub fn format_tables(doc: String) -> String {
+    format(doc)
 }

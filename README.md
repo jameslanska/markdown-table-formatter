@@ -1,6 +1,6 @@
 # Markdown Table Formatter
 
-[![Rust](https://github.com/jameslanska/markdown-table-formatter/actions/workflows/rust.yml/badge.svg)](https://github.com/jameslanska/markdown-table-formatter/actions/workflows/rust.yml)[![Latest Version](https://img.shields.io/crates/v/markdown-table-formatter.svg)](https://crates.io/crates/markdown-table-formatter) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](code_of_conduct.md)
+[![Rust](https://github.com/jameslanska/markdown-table-formatter/actions/workflows/rust.yml/badge.svg)](https://github.com/jameslanska/markdown-table-formatter/actions/workflows/rust.yml) [![Latest Version](https://img.shields.io/crates/v/markdown-table-formatter.svg)](https://crates.io/crates/markdown-table-formatter) [![NPM version](https://img.shields.io/npm/v/@jameslanska/markdown-table-formatter.svg)](https://www.npmjs.org/package/@jameslanska/markdown-table-formatter) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](code_of_conduct.md)
 
 A performant table formatter fully compliant with the [Unicode 15.1.0](https://www.unicode.org/versions/Unicode15.1.0/) and [Github Flavored Markdown](https://github.github.com/gfm/) (GFM) specifications.  The formatter operates on an abstract syntax tree to fully capture the complexity of Unicode and the GFM specification.
 
@@ -20,6 +20,14 @@ let correct = "# Example
 | C    |   D   |    E |";
 
 assert_eq!(format_tables(unformatted), correct);
+```
+
+If you are using the `npm` package, the use following instead.
+
+```typescript
+import { format_tables } from "@jameslanska/markdown_table_formatter";
+
+format_tables(unformatted)
 ```
 
 Markdown Table Formatter [correctly handles](https://github.com/jameslanska/unicode-display-width) double width *grapheme clusters* such as emojis (🦀🤯) and ideographic CJK (Chinese, Japanese, Korean) characters according to [Unicode Standard Annex \#11](https://www.unicode.org/reports/tr11/) and [Unicode Technical Standard \#51](https://www.unicode.org/reports/tr51/).
